@@ -44,12 +44,25 @@ choice_color()
 function choice_color(){
     for (let b = 0; b < 6; b++) {
         let color_button = document.createElement("button")
+        color_button.classList.add("color_palet")
         color_button.style.backgroundColor = color[b]
         color_button.style.height = "50px"
         color_button.style.width = "60px"
         document.body.appendChild(color_button)
     }
 }
+
+document.querySelectorAll('.color_palet').forEach((button)=> {
+    button.addEventListener('click', (el) => {
+        let selection_color = el.target.style.backgroundColor
+        console.log(selection_color)
+    })
+})
+
+document.querySelectorAll('.square2').addEventListener('click', (el) => {
+    let selection_color = el.target.style.backgroundColor
+    console.log(selection_color)
+})
 
 function check(){
 
