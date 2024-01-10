@@ -3,7 +3,7 @@ let green = '#00CD1C'
 let red = '#FF0000'
 let yellow = '#F3FF00'
 let gray = '#606060'
-let purple = '#CDOOFF'
+let purple = '#CD00FF'
 let color = [red, blue, green, yellow, purple, gray]
 let board
 let nb_lines
@@ -39,8 +39,16 @@ function game_space(){
     }
 }
 
-function choice_color(){
+choice_color()
 
+function choice_color(){
+    for (let b = 0; b < 6; b++) {
+        let color_button = document.createElement("button")
+        color_button.style.backgroundColor = color[b]
+        color_button.style.height = "50px"
+        color_button.style.width = "60px"
+        document.body.appendChild(color_button)
+    }
 }
 
 function check(){
