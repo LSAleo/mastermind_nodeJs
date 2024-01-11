@@ -9,6 +9,7 @@ let board
 let nb_lines
 let check_pin
 let square2
+let selected_color = null
 
 game_space()
 
@@ -37,6 +38,14 @@ function game_space(){
             square.appendChild(square2)
         }
     }
+    document.querySelectorAll('.square').forEach((square, index) => {
+        square.addEventListener('click', (el) => {
+            if ((index + 1) % 5 !== 4 && (index + 2) % 5 !== 4 && (index + 3) % 5 !== 4 && index % 5 !== 4 && (index + 4) % 5 !== 4 && selected_color) {
+                el.target.style.backgroundColor = selected_color
+                selected_color = null
+            }
+        })
+    })
 }
 
 choice_color()
@@ -49,6 +58,10 @@ function choice_color(){
         color_button.style.height = "50px"
         color_button.style.width = "60px"
         document.body.appendChild(color_button)
+
+        color_button.addEventListener('click', () => {
+            selected_color = color[b]
+        })
     }
 }
 
@@ -57,11 +70,6 @@ document.querySelectorAll('.color_palet').forEach((button)=> {
         let selection_color = el.target.style.backgroundColor
         console.log(selection_color)
     })
-})
-
-document.querySelectorAll('.square2').addEventListener('click', (el) => {
-    let selection_color = el.target.style.backgroundColor
-    console.log(selection_color)
 })
 
 function check(){
